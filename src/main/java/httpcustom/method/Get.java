@@ -1,41 +1,38 @@
-package httpcustom;
+package httpcustom.method;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class Post {
-    private String body="";
-    public String doPost(String Url,String data){
-
-
+public class Get {
+    private final StringBuilder body= new StringBuilder();
+    public StringBuilder sendGet(String getURL){
 
         try{
-            URL url=new URL(Url);
+            URL url=new URL(getURL);
             HttpURLConnection httpURLConnection=(HttpURLConnection) url.openConnection();
-            httpURLConnection.setDoOutput(true);
 
-            // setting
+            //设置
             httpURLConnection.setConnectTimeout(10000);
             httpURLConnection.setUseCaches(false);
-            httpURLConnection.setRequestMethod("POST");
-            httpURLConnection.setRequestProperty("contentType","application/json");
+            httpURLConnection.setRequestMethod("GET");
+            httpURLConnection.setRequestProperty("User-Agent", "Mozilla/5.0");
+            httpURLConnection.setRequestProperty("Cookie","hello java test");
 
-            // 发送post
-//            httpURLConnection.connect();
-            OutputStream outputStream=httpURLConnection.getOutputStream();
-            PrintWriter writer=new PrintWriter(outputStream);
-            writer.print(data);
-            writer.flush();
+            // 发送连接
+            httpURLConnection.connect();
 
-            //读取响应
+
+            // 获取响应状态码
+            int responseCode = httpURLConnection.getResponseCode();
             InputStream inputStream=httpURLConnection.getInputStream();
             InputStreamReader inputStreamReader=new InputStreamReader(inputStream);
             BufferedReader bufferedReader=new BufferedReader(inputStreamReader);
-
             String line = "";
             while ((line =bufferedReader.readLine())!=null){
-                body+= line;
+                body.append(line);
             }
 
             //释放

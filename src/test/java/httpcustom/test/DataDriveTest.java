@@ -1,12 +1,11 @@
 package httpcustom.test;
 
-import httpcustom.Post;
+import httpcustom.method.Post;
 import httpcustom.pojo.Cup;
 import httpcustom.utils.JDBCConnection;
 import httpcustom.utils.ReadFile;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

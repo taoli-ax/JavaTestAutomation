@@ -1,18 +1,17 @@
 package httpcustom.test;
 
-import httpcustom.Get;
-import httpcustom.Post;
+import httpcustom.method.Get;
+import httpcustom.method.Post;
 import org.junit.Test;
-
-import java.text.DecimalFormat;
-import java.util.Locale;
 
 public class MethodTest {
     @Test
     public void GetTest(){
         Get get=new Get();
-        String response= String.valueOf(get.sendGet("http://localhost:8080/SpringMVCDemo_war_exploded/ajax/json"));
+        String response= String.valueOf(get.sendGet("http://localhost:8080/SpringMVCDemo_war_exploded/cups/1"));
+        System.out.println(response);
         if(response!=null){
+
             System.out.println("MethodTest.GetTest: test success!");;
         }
         else {

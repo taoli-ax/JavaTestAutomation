@@ -14,3 +14,11 @@ public class Url {
     HttpURLConnection urlConnection=(HttpURLConnection) url.openConnection();
 }
 ```
+
+
+### 提问 javascript中对象数组和数组对象有什么不同应用场景？
+
+### JOSNArray和JSONObject
+用来构造`json`数据,
+注意 `{}`在java中表示数组,但打印出来是`[]` 
+
